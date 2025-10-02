@@ -3,12 +3,23 @@ class Program
 {
     public static void Main()
     {
-        Console.Write("Nhap thang: ");
-        int m = int.Parse(Console.ReadLine());
-        Console.Write("Nhap nam: ");
-        int y = int.Parse(Console.ReadLine());
+        int m, y;
+        do
+        {
+            Console.Write("Nhap thang: ");
+            m = int.Parse(Console.ReadLine());
+            if (m < 1 || m > 12)
+                Console.WriteLine("Thang khong hop le. Vui long nhap lai!");
+        } while (m < 1 || m > 12);
+        do
+        {
+            Console.Write("Nhap nam: ");
+            y = int.Parse(Console.ReadLine());
+            if (y<0) 
+                Console.WriteLine("Nam khong hop le. Vui long nhap lai!");
+        } while (y < 0);
 
-        Console.WriteLine("So ngay trong thang {0} la: {1} ngay", 
+        Console.WriteLine("So ngay trong thang {0} la: {1} ngay",
             m, SoNgayTrongThang(m, y));
     }
     static bool Check_NamNhuan(int year)
