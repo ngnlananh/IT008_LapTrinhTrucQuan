@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\L\u1EADp tr\u00ECnh tr\u1EF1c quan\\Th\u1EF1c h\u00E0nh\\LAB01\\BTH1_NguyenNgocLanAnh_24520109\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{607EA9CD-8F25-4E19-9F6E-CB6CA6CD8BEE}|Bai01\\Bai01.csproj|d:\\l\u1EADp tr\u00ECnh tr\u1EF1c quan\\th\u1EF1c h\u00E0nh\\lab01\\bth1_nguyenngoclananh_24520109\\bai01\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{607EA9CD-8F25-4E19-9F6E-CB6CA6CD8BEE}|Bai01\\Bai01.csproj|solutionrelative:bai01\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\L\u1EADp tr\u00ECnh tr\u1EF1c quan\\Th\u1EF1c h\u00E0nh\\LAB01\\BTH1_NguyenNgocLanAnh_24520109\\Bai01\\Program.cs",
+              "RelativeDocumentMoniker": "Bai01\\Program.cs",
+              "ToolTip": "D:\\L\u1EADp tr\u00ECnh tr\u1EF1c quan\\Th\u1EF1c h\u00E0nh\\LAB01\\BTH1_NguyenNgocLanAnh_24520109\\Bai01\\Program.cs",
+              "RelativeToolTip": "Bai01\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T03:54:25.967Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
