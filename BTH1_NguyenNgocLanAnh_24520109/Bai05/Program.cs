@@ -6,12 +6,14 @@ class Program
         int d, m, y;
         do
         {
+            //Nhap ngay thang nam
             Console.Write("Nhap ngay: ");
             d = Convert.ToInt32(Console.ReadLine());
             Console.Write("Nhap thang: ");
             m = Convert.ToInt32(Console.ReadLine());
             Console.Write("Nhap nam: ");
             y = Convert.ToInt32(Console.ReadLine());
+
             if (!Check_HopLe(d, m, y))
                 Console.WriteLine("Ngay khong hop le, vui long nhap lai!");
         } while (!Check_HopLe(d, m, y));
@@ -29,12 +31,14 @@ class Program
             case 6: Console.Write("Thu sau"); break;
         }
     }
+    //Kiểm tra năm nhuận
     static bool Check_NamNhuan(int year)
     {
         if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0))
             return true;
         return false;
     }
+    //Số ngày tối đa trong tháng
     static int SoNgayTrongThang(int m, int y)
     {
         int[] DaysofMonth = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
@@ -42,6 +46,7 @@ class Program
             return 29;
         return DaysofMonth[m - 1];
     }
+    //Kiểm tra tính hợp lệ của ngày tháng năm
     public static bool Check_HopLe(int day, int month, int year) 
     {
         if (year < 1 || month < 1 || month > 12)
@@ -49,6 +54,7 @@ class Program
         int daysInMonth = SoNgayTrongThang(month, year);
         return (day >= 1 && day <= daysInMonth);
     }
+    //Tính thứ trong tuần theo công thức Zeller
     public static int DayofWeek (int day, int month, int year)
     {
         // ap dung cong thuc Zeller

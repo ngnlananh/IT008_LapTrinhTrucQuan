@@ -2,6 +2,7 @@
 
 public class Program
 {
+    //Tạo mảng nhẫu nhiên với n phần tử
     public static void Nhap(out int[] arr, out int n)
     {
         Console.WriteLine("Nhap so luong phan tu cua mang");
@@ -13,7 +14,7 @@ public class Program
             arr[i] = r.Next(0, 100);
         }
     }
-
+    //Xuất mảng
     public static void Xuat(ref int[] arr)
     {
         foreach (var item in arr)
@@ -22,7 +23,7 @@ public class Program
         }
         Console.WriteLine();
     }
-
+    //Tính tổng các số lẻ trong mảng
     public static int Tong_Le(int[] arr)
     {
         int result = 0;
@@ -33,7 +34,7 @@ public class Program
         }
         return result;
     }
-
+    //Kiểm tra số nguyên tố
     public static bool Check_SNT(int x)
     {
         if (x <= 1) return false;
@@ -49,7 +50,7 @@ public class Program
         }
         return true;
     }
-
+    //Đếm số lượng số nguyên tố trong mảng
     public static int Dem_SNT(int[] arr)
     {
         int count = 0;
@@ -60,7 +61,7 @@ public class Program
         }
         return count;
     }
-
+    //Kiểm tra số chính phương
     public static bool Check_SCP(int x)
     {
         if (x < 0) return false;
@@ -72,7 +73,7 @@ public class Program
         }
         return false;
     }
-
+    //Tìm số chính phương nhỏ nhất trong mảng
     public static int SCP_min(int[] arr)
     {
         int? min = null;
@@ -91,7 +92,7 @@ public class Program
         int n;
         Nhap(out arr, out n);
 
-        //MENU:
+        //In MENU:
         int choice;
         do
         {
@@ -103,7 +104,10 @@ public class Program
             Console.WriteLine("0. Exit");
             Console.Write("Chon chuc nang: ");
 
+            //Nhập lựa chọn
             choice = int.Parse(Console.ReadLine());
+
+            //Xử lý lựa chọn
             switch (choice)
             {
                 case (0):

@@ -4,17 +4,20 @@ class Program
 {
     static void Main()
     {
+        //Nhập n và m
         Console.Write("Nhap n (n > 0):");
         int n = int.Parse(Console.ReadLine());
         Console.Write("Nhap m (m > 0):");
         int m = int.Parse(Console.ReadLine());
 
+        //Tạo ma trận ngẫu nhiên
         int[][] arr = new int[n][];
         TaoMaTran_NgauNhien(ref arr, n, m);
 
         int choice;
         do
         {
+            //In menu 
             Console.WriteLine("================= MENU ================");
             Console.WriteLine("1. Xuat ma tran");
             Console.WriteLine("2. Tim phan tu lon nhat / nho nhat");
@@ -25,8 +28,10 @@ class Program
             Console.WriteLine("0. Exit");
             Console.Write("Chon chuc nang: ");
 
+            //Đọc lựa chọn
             choice = int.Parse(Console.ReadLine());
 
+            //Xử lý lựa chọn
             switch (choice)
             {
                 case 0:
@@ -60,6 +65,7 @@ class Program
         } while (choice != 0);
     }
 
+    //Tạo ma trận ngẫu nhiên
     static void TaoMaTran_NgauNhien(ref int[][] arr, int n, int m)
     {
         Random rand = new Random();
@@ -72,6 +78,7 @@ class Program
             }
         }
     }
+    //Xuất ma trận
     static void XuatMaTran(int[][] arr)
     {
         Console.WriteLine("Ma tran:");
@@ -82,6 +89,7 @@ class Program
             Console.WriteLine();
         }
     }
+    //Tìm phần tử lớn nhất
     static int Max_Element(int[][] arr)
     {
         int max = int.MinValue;
@@ -95,6 +103,7 @@ class Program
         }
         return max;
     }
+    //Tìm phần tử nhỏ nhất
     static int Min_Element(int[][] arr)
     {
         int min = int.MaxValue;
@@ -108,6 +117,7 @@ class Program
         }
         return min;
     }
+    //Tìm dòng có tổng lớn nhất
     static int DongCoTongLonNhat(int[][] arr)
     {
         int maxSum = int.MinValue;
@@ -127,6 +137,7 @@ class Program
         }
         return rowIndex;
     }
+    //Kiểm tra số nguyên tố
     static bool Check_SNT(int x)
     {
         if (x <= 1) return false;
@@ -142,6 +153,7 @@ class Program
         }
         return true;
     }
+    //Đếm số lượng số không phải số nguyên tố
     static int NumOfNonPrime(int[][] arr)
     {
         int count = 0;
@@ -155,6 +167,7 @@ class Program
         }
         return count;
     }
+    //Xóa dòng thứ k
     static void Erase_Row(ref int[][] arr, int k)
     {
         if (k < 0 || k >= arr.Length)
@@ -168,6 +181,7 @@ class Program
         }
         Array.Resize(ref arr, arr.Length - 1);
     }
+    //Xóa cột chứa phần tử lớn nhất
     static void Erase_Column_Max_element(ref int[][] arr)
     {
         int maxElement = Max_Element(arr);
