@@ -10,28 +10,23 @@ class Program
             d = Convert.ToInt32(Console.ReadLine());
             Console.Write("Nhap thang: ");
             m = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Nhap nam: ");
+            Console.Write("Nhap nam: ");
             y = Convert.ToInt32(Console.ReadLine());
             if (!Check_HopLe(d, m, y))
                 Console.WriteLine("Ngay khong hop le, vui long nhap lai!");
         } while (!Check_HopLe(d, m, y));
         
         int thu = DayofWeek(d, m, y);
-        if (thu == -1)
-            Console.WriteLine("Nam khong hop le");
-        else
-        {
             Console.WriteLine("---Ngay {0}/{1}/{2} la:", d, m, y);
-            switch (thu)
-            {
-                case 0: Console.Write("Thu bay"); break;
-                case 1: Console.Write("Chu nhat"); break;
-                case 2: Console.Write("Thu hai"); break;
-                case 3: Console.Write("Thu ba"); break;
-                case 4: Console.Write("Thu tu"); break;
-                case 5: Console.Write("Thu nam"); break;
-                case 6: Console.Write("Thu sau"); break;
-            }
+        switch (thu)
+        {
+            case 0: Console.Write("Thu bay"); break;
+            case 1: Console.Write("Chu nhat"); break;
+            case 2: Console.Write("Thu hai"); break;
+            case 3: Console.Write("Thu ba"); break;
+            case 4: Console.Write("Thu tu"); break;
+            case 5: Console.Write("Thu nam"); break;
+            case 6: Console.Write("Thu sau"); break;
         }
     }
     static bool Check_NamNhuan(int year)
