@@ -51,7 +51,7 @@ class Program
                     Erase_Row(ref arr, k);
                     break;
                 case 6:
-                    Erase_Column(ref arr, Array.IndexOf(arr[0], Max_Element(arr)));
+                    Erase_Column_Max_element(ref arr);
                     break;
                 default:
                     Console.WriteLine("Chuc nang khong hop le! Vui long chon lai");
@@ -168,9 +168,11 @@ class Program
         }
         Array.Resize(ref arr, arr.Length - 1);
     }
-    static void Erase_Column(ref int[][] arr, int colIndex)
+    static void Erase_Column_Max_element(ref int[][] arr)
     {
-        if (arr.Length == 0 || colIndex < 0 || colIndex >= arr[0].Length)
+        int maxElement = Max_Element(arr);
+        int colIndex = Array.IndexOf(arr[0], maxElement);
+        if (colIndex == -1)
         {
             Console.WriteLine("Cot khong hop le.");
             return;
