@@ -122,26 +122,50 @@ public class Program
                 case (1):
                     Xuat(ref arr); break;
                 case (2):
-                    int sum_le = Tong_Le(arr);
-                    if (sum_le != 0)
-                        Console.WriteLine("Tong cac so le trong mang la: " + sum_le);
+                    if (arr.Length == 0)
+                    {
+                        Console.WriteLine("Mang rong, khong co so le trong mang rong");
+                        break;
+                    }
                     else
-                        Console.WriteLine("Khong co so le trong mang");
-                    break;
+                    {
+                        int sum_le = Tong_Le(arr);
+                        if (sum_le != 0)
+                            Console.WriteLine("Tong cac so le trong mang la: " + sum_le);
+                        else
+                            Console.WriteLine("Khong co so le trong mang");
+                        break;
+                    }
                 case (3):
-                    int count_SNT = Dem_SNT(arr);
-                    if (count_SNT != 0)
-                        Console.WriteLine("So luong so nguyen to trong mang: " + count_SNT);
+                    if (arr.Length == 0)
+                    {
+                        Console.WriteLine("Mang rong, khong co so nguyen to trong mang rong");
+                        break;
+                    }
                     else
-                        Console.WriteLine("Khong co so nguyen to trong mang");
-                    break;
+                    {
+                        int count_SNT = Dem_SNT(arr);
+                        if (count_SNT != 0)
+                            Console.WriteLine("So luong so nguyen to trong mang: " + count_SNT);
+                        else
+                            Console.WriteLine("Khong co so nguyen to trong mang");
+                        break;
+                    }
                 case (4):
-                    int SCP = SCP_min(arr);
-                    if (SCP != -1)
-                        Console.WriteLine("So chinh phuong nho nhat trong mang: " + SCP);
+                    if (arr.Length == 0)
+                    {
+                        Console.WriteLine("Mang rong, khong co so chinh phuong trong mang rong");
+                        break;
+                    }
                     else
-                        Console.WriteLine("Khong co so chinh phuong trong mang");
-                    break;
+                    {
+                        int SCP = SCP_min(arr);
+                        if (SCP != -1)
+                            Console.WriteLine("So chinh phuong nho nhat trong mang: " + SCP);
+                        else
+                            Console.WriteLine("Khong co so chinh phuong trong mang");
+                        break;
+                    }
                 default:
                     Console.WriteLine("Chuc nang khong hop le! Vui long chon lai");
                     continue;
