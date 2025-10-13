@@ -17,11 +17,17 @@ public class Program
     //Xuất mảng
     public static void Xuat(ref int[] arr)
     {
-        foreach (var item in arr)
+        if (arr.Length == 0)
+            Console.WriteLine("Mang rong");
+        else
         {
-            Console.Write(item + " ");
+            Console.WriteLine("Mang vua nhap la: ");
+            foreach (var item in arr)
+            {
+                Console.Write(item + " ");
+            }
+            Console.WriteLine();
         }
-        Console.WriteLine();
     }
     //Tính tổng các số lẻ trong mảng
     public static int Tong_Le(int[] arr)
@@ -114,7 +120,6 @@ public class Program
                     Console.WriteLine("===========THANKYOU!===========");
                     return;
                 case (1):
-                    Console.WriteLine("Mang vua nhap la: ");
                     Xuat(ref arr); break;
                 case (2):
                     int sum_le = Tong_Le(arr);
