@@ -18,6 +18,7 @@ class Program
         do
         {
             //In menu 
+            Console.WriteLine();
             Console.WriteLine("================= MENU ================");
             Console.WriteLine("1. Xuat ma tran");
             Console.WriteLine("2. Tim phan tu lon nhat / nho nhat");
@@ -81,12 +82,20 @@ class Program
     //Xuất ma trận
     static void XuatMaTran(int[][] arr)
     {
-        Console.WriteLine("Ma tran:");
-        foreach (var row in arr)
+        Console.Write("Ma tran:");
+        if (arr.Length == 0)
         {
-            foreach (var item in row)
-                Console.Write(item + " ");
+            Console.Write("Rong");
+        }
+        else
+        {
             Console.WriteLine();
+            foreach (var row in arr)
+            {
+                foreach (var item in row)
+                    Console.Write(item + " ");
+                Console.WriteLine();
+            }
         }
     }
     //Tìm phần tử lớn nhất
@@ -153,19 +162,19 @@ class Program
         }
         return true;
     }
-    //Đếm số lượng số không phải số nguyên tố
+    //Tổng các số không phải số nguyên tố
     static int NumOfNonPrime(int[][] arr)
     {
-        int count = 0;
+        int sum = 0;
         foreach (var row in arr)
         {
             foreach (var item in row)
             {
                 if (!Check_SNT(item))
-                    count++;
+                    sum += item;
             }
         }
-        return count;
+        return sum;
     }
     //Xóa dòng thứ k
     static void Erase_Row(ref int[][] arr, int k)
