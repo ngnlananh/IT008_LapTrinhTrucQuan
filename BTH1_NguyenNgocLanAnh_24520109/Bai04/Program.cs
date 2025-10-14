@@ -15,8 +15,13 @@ class cThangNam
     //Nhập tháng năm từ bàn phím
     public void Nhap()
     {
-        Console.Write("Nhap thang:");
-        iMonth = int.Parse(Console.ReadLine());
+        do
+        {
+            Console.Write("Nhap thang:");
+            iMonth = int.Parse(Console.ReadLine());
+            if (iMonth < 1 || iMonth > 12)
+                Console.WriteLine("Thang khong hop le, vui long nhap lai!!!");
+        } while (iMonth < 1 || iMonth > 12);
         Console.Write("Nhap nam:");
         iYear = int.Parse(Console.ReadLine());
     }
@@ -24,7 +29,7 @@ class cThangNam
     //Xuất tháng năm
     public void Xuat()
     {
-        Console.Write("{0}/{1}/{2}", iMonth, iYear);
+        Console.Write("{0}/{1}", iMonth, iYear);
     }
 
     //Kiểm tra năm nhuận
