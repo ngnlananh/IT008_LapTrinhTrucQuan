@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Net.NetworkInformation;
 
-class cThoiGian
+class cNgayThangNam
 {
     private int iDay;
     private int iMonth;
     private int iYear;
 
     //Hàm khởi tạo
-    public cThoiGian(int iDay = 0, int iMonth = 0, int iYear = 0)
+    public cNgayThangNam(int iDay = 0, int iMonth = 0, int iYear = 0)
     {
         this.iDay = iDay;
         this.iMonth = iMonth;
@@ -47,7 +46,7 @@ class cThoiGian
         if (iYear < 0 || iMonth < 1 || iMonth > 12 || iDay < 1)
             return false;
         int[] DaysofMonth = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-        if (iMonth == 2 && IsNamNhuan())
+        if (iMonth == 2 && this.IsNamNhuan())
             DaysofMonth[1] = 29;
         if (DaysofMonth[iMonth - 1] < iDay)
             return false;
@@ -60,7 +59,7 @@ class Program
     static void Main()
     {
         //Nhập ngày tháng năm từ bàn phím
-        cThoiGian date = new cThoiGian();
+        cNgayThangNam date = new cNgayThangNam();
         Console.WriteLine("Nhap ngay thang nam:");
         date.Nhap();
 
