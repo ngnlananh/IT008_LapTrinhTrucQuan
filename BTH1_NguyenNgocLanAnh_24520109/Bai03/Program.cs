@@ -34,9 +34,9 @@ class cThoiGian
     }
     
     //Kiểm tra năm nhuận
-    public bool IsNamNhuan(int year)
+    public bool IsNamNhuan()
     {
-        if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0))
+        if (iYear % 400 == 0 || (iYear % 4 == 0 && iYear % 100 != 0))
             return true;
         return false;
     }
@@ -47,7 +47,7 @@ class cThoiGian
         if (iYear < 0 || iMonth < 1 || iMonth > 12 || iDay < 1)
             return false;
         int[] DaysofMonth = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-        if (iMonth == 2 && IsNamNhuan(iYear))
+        if (iMonth == 2 && IsNamNhuan())
             DaysofMonth[1] = 29;
         if (DaysofMonth[iMonth - 1] < iDay)
             return false;
