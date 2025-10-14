@@ -1,45 +1,68 @@
 ﻿using System;
-class Program
+
+class cThangNam
 {
-    public static void Main()
+    private int iMonth;
+    private int iYear;
+
+    //Hàm khởi tạo
+    public cThangNam(int iMonth = 0, int iYear = 0)
     {
-        int m, y;
+        this.iMonth = iMonth;
+        this.iYear = iYear;
+    }
 
-        //Nhập tháng bằng vòng lặp do ... while 
+    //Nhập tháng năm từ bàn phím
+    public void Nhap()
+    {
         do
         {
-            Console.Write("Nhap thang: ");
-            m = int.Parse(Console.ReadLine());
-            if (m < 1 || m > 12)
-                Console.WriteLine("Thang khong hop le. Vui long nhap lai!");
-        } while (m < 1 || m > 12);
+            Console.Write("Nhap thang:");
+            iMonth = int.Parse(Console.ReadLine());
+            if (iMonth < 1 || iMonth > 12)
+                Console.WriteLine("Thang khong hop le, vui long nhap lai!!!");
+        } while (iMonth < 1 || iMonth > 12);
+        Console.Write("Nhap nam:");
+        iYear = int.Parse(Console.ReadLine());
+    }
 
-        //Nhập năm bằng vòng lặp do ... while 
-        do
-        {
-            Console.Write("Nhap nam: ");
-            y = int.Parse(Console.ReadLine());
-            if (y<0) 
-                Console.WriteLine("Nam khong hop le. Vui long nhap lai!");
-        } while (y < 0);
-
-        Console.WriteLine("So ngay trong thang {0} la: {1} ngay", m, SoNgayTrongThang(m, y));
+    //Xuất tháng năm
+    public void Xuat()
+    {
+        Console.Write("{0}/{1}", iMonth, iYear);
     }
 
     //Kiểm tra năm nhuận
-    static bool Check_NamNhuan(int year)
+    public bool IsNamNhuan()
     {
-        if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0))
+        if (iYear % 400 == 0 || (iYear % 4 == 0 && iYear % 100 != 0))
             return true;
         return false;
     }
 
     //Trả về số ngày tối đa trong tháng
-    static int SoNgayTrongThang(int m, int y)
+    public int SoNgayTrongThang()
     {
         int[] DaysofMonth = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-        if (m == 2 && Check_NamNhuan(y))
+        if (iMonth == 2 && this.IsNamNhuan())
             return 29;
-        return DaysofMonth[m - 1];
+        return DaysofMonth[iMonth - 1];
+    }
+}
+
+class Program
+{
+    public static void Main()
+    {
+        cThangNam ThangNam = new cThangNam();
+
+        //Nhập tháng năm 
+        Console.WriteLine("Nhap thang nam: ");
+        ThangNam.Nhap();
+
+        //Xuất kết quả số ngày trong tháng
+        Console.Write("So ngay cua thang ");
+        ThangNam.Xuat();
+        Console.WriteLine(" la: " + ThangNam.SoNgayTrongThang());
     }
 }
