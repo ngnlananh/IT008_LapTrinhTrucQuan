@@ -18,18 +18,18 @@ class cThoiGian
     //Nhập ngày tháng năm từ bàn phím
     public void Nhap()
     {
-        Console.Write("Nhập ngày:");
+        Console.Write("Nhap ngay:");
         iDay = int.Parse(Console.ReadLine());
-        Console.Write("Nhập tháng:");
+        Console.Write("Nhap thang:");
         iMonth = int.Parse(Console.ReadLine());
-        Console.Write("Nhập năm:");
+        Console.Write("Nhap nam:");
         iYear = int.Parse(Console.ReadLine());
     }
 
     //Xuất ngày tháng năm
     public void Xuat()
     {
-        Console.Write("Ngày tháng năm vừa nhập là: ");
+        Console.Write("Ngay thang nam vua nhap la: ");
         Console.WriteLine("{0}/{1}/{2}", iDay, iMonth, iYear);
     }
     
@@ -61,7 +61,7 @@ class Program
     {
         //Nhập ngày tháng năm từ bàn phím
         cThoiGian date = new cThoiGian();
-        Console.WriteLine("Nhập ngày tháng năm:");
+        Console.WriteLine("Nhap ngay thang nam:");
         date.Nhap();
 
         //Xuất ngày tháng năm vừa nhập
@@ -69,7 +69,7 @@ class Program
 
         //Xuất kết quả kiểm tra ngày tháng năm hợp lệ
         if (date.IsHopLe() == true)
-            Console.WriteLine("Ngày tháng năm hợp lệ.");
-        else Console.WriteLine("Ngày tháng năm không hợp lệ.");
+            Console.WriteLine("Ngay thang nam hop le.");
+        else Console.WriteLine("Ngay thang nam khong hop le.");
     }
 }
