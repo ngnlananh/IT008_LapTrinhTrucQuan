@@ -6,10 +6,6 @@ class cNgayThangNam
     private int iMonth;
     private int iYear;
 
-    public int Day { get => iDay; set => iDay = value; }
-    public int Month { get => iMonth; set => iMonth = value; }
-    public int Year { get => iYear; set => iYear = value; }
-
     //Hàm khởi tạo
     public cNgayThangNam(int iDay = 0, int iMonth = 0, int iYear = 0)
     {
@@ -18,6 +14,7 @@ class cNgayThangNam
         this.iYear = iYear;
     }
 
+    //Hàm kiểm thử nhập số nguyên
     private int NhapSoNguyen(string message)
     {
         int temp;
@@ -37,7 +34,6 @@ class cNgayThangNam
 
         } while (true);
     }
-
 
     //Nhập ngày tháng năm từ bàn phím
     public void Nhap()
