@@ -6,6 +6,10 @@ class cNgayThangNam
     private int iMonth;
     private int iYear;
 
+    public int Day { get => iDay; set => iDay = value; }
+    public int Month { get => iMonth; set => iMonth = value; }
+    public int Year { get => iYear; set => iYear = value; }
+
     //Hàm khởi tạo
     public cNgayThangNam(int iDay = 0, int iMonth = 0, int iYear = 0)
     {
@@ -14,15 +18,34 @@ class cNgayThangNam
         this.iYear = iYear;
     }
 
+    private int NhapSoNguyen(string message)
+    {
+        int temp;
+        bool flag = false;
+        do
+        {
+            if (flag)
+                Console.WriteLine("Vui long nhap so nguyen!!!!");
+
+            Console.Write(message);
+            string s = Console.ReadLine();
+            flag = true;
+
+            // Chỉ chấp nhận khi là số nguyên
+            if (int.TryParse(s, out temp))
+                return temp;
+
+        } while (true);
+    }
+
+
     //Nhập ngày tháng năm từ bàn phím
     public void Nhap()
     {
-        Console.Write("Nhap ngay:");
-        iDay = int.Parse(Console.ReadLine());
-        Console.Write("Nhap thang:");
-        iMonth = int.Parse(Console.ReadLine());
-        Console.Write("Nhap nam:");
-        iYear = int.Parse(Console.ReadLine());
+
+        iDay = NhapSoNguyen("Nhap ngay: ");
+        iMonth = NhapSoNguyen("Nhap thang: ");
+        iYear = NhapSoNguyen("Nhap nam: ");
     }
 
     //Xuất ngày tháng năm
