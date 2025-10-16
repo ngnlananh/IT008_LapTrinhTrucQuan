@@ -5,9 +5,24 @@ public class Program
     //Tạo mảng nhẫu nhiên với n phần tử
     public static void Nhap(out int[] arr, out int n)
     {
-        Console.WriteLine("Nhap so luong phan tu cua mang");
-        n = int.Parse(Console.ReadLine());
+        string s;
+        int temp;
+        bool flag = false;
+        // Nhập số lượng phần tử, kiểm tra hợp lệ
+        do
+        {
+            if (flag == true)
+                Console.WriteLine("Vui long nhap so nguyen duong!!!");
+            Console.Write("Nhap so luong phan tu cua mang: ");
+            s = Console.ReadLine();
+            flag = true;
+        }
+        while (!int.TryParse(s, out temp) || temp < 0); // chỉ chấp nhận số nguyên dương
+
+        n = temp; // gán giá trị hợp lệ cho n
         arr = new int[n];
+
+        // Sinh ngẫu nhiên mảng có n phần tử
         Random r = new Random();
         for (int i = 0; i < n; i++)
         {
