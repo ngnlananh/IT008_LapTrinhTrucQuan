@@ -23,8 +23,21 @@ public class Program
     }
     public static void Main()
     {
-        Console.Write("Nhap n: ");
-        int n = int.Parse(Console.ReadLine());
+        string s;
+        int temp;
+        int n;
+        bool flag = false;
+        // Nhập sô nguyên dương n
+        do
+        {
+            if (flag == true)
+                Console.WriteLine("Vui long nhap so nguyen duong!!!");
+            Console.Write("Nhap so nguyen duong n: ");
+            s = Console.ReadLine();
+            flag = true;
+        }
+        while (!int.TryParse(s, out temp) || temp <= 0); // chỉ chấp nhận số nguyên dương
+        n = temp;
         Console.WriteLine("Tong cac so nguyen to < n la: " + TongNguyenTo(n));
     }
 }
