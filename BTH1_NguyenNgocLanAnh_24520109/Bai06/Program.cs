@@ -2,13 +2,30 @@
 
 class Program
 {
+    public static int NhapSoNguyen(string message)
+    {
+        int temp;
+        bool flag = false;
+        string s;
+        do
+        {
+            if (flag)
+                Console.WriteLine("Vui long nhap so nguyen duong !!!");
+            Console.Write(message);
+            s = Console.ReadLine();
+            flag = true;
+
+        } while (!int.TryParse(s, out temp) || temp <= 0);
+        return temp;
+    }
+
+
+
     static void Main()
     {
         //Nhập n và m
-        Console.Write("Nhap n (n > 0):");
-        int n = int.Parse(Console.ReadLine());
-        Console.Write("Nhap m (m > 0):");
-        int m = int.Parse(Console.ReadLine());
+        int n = NhapSoNguyen("Nhap n (n>0): ");
+        int m = NhapSoNguyen("Nhap m (m>0): ");
 
         //Tạo ma trận ngẫu nhiên
         int[][] arr = new int[n][];
@@ -193,20 +210,33 @@ class Program
     //Xóa cột chứa phần tử lớn nhất
     static void Erase_Column_Max_element(ref int[][] arr)
     {
-        int maxElement = Max_Element(arr);
-        int colIndex = Array.IndexOf(arr[0], maxElement);
-        if (colIndex == -1)
-        {
-            Console.WriteLine("Cot khong hop le.");
-            return;
-        }
+        int maxElement = int.MinValue;
+        int maxCol = -1;
+        // Tìm cột chứa phần tử lớn nhất
         for (int i = 0; i < arr.Length; i++)
         {
-            for (int j = colIndex; j < arr[i].Length - 1; j++)
+            for (int j = 0; j < arr[i].Length; j++)
             {
-                arr[i][j] = arr[i][j + 1];
+                if (arr[i][j] > maxElement)
+                {
+                    maxElement = arr[i][j];
+                    maxCol = j;
+                }
             }
+        }
+        if (maxCol == -1)
+        {
+            Console.WriteLine("Khong tim thay phan tu lon nhat!");
+            return;
+        }
+        // Xóa cột maxCol
+        for (int i = 0; i < arr.Length; i++)
+        {
+            for (int j = maxCol; j < arr[i].Length - 1; j++)
+                arr[i][j] = arr[i][j + 1];
+
             Array.Resize(ref arr[i], arr[i].Length - 1);
         }
     }
+
 }
