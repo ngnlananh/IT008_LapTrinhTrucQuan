@@ -12,18 +12,53 @@ class cThangNam
         this.iYear = iYear;
     }
 
+    //Hàm kiểm thử nhập tháng
+    private int NhapThang(string message)
+    {
+        int temp;
+        bool flag = false;
+        do
+        {
+            if (flag)
+                Console.WriteLine("Vui long nhap thang hop le [1-12] !!!!");
+
+            Console.Write(message);
+            string s = Console.ReadLine();
+            flag = true;
+
+            // Chỉ chấp nhận khi là số nguyên trong khoảng 1-12
+            if (int.TryParse(s, out temp) && temp >= 1 && temp <= 12)
+                return temp;
+
+        } while (true);
+    }
+
+    //Hàm kiểm thử nhập năm 
+    private int NhapNam(string message)
+    {
+        int temp;
+        bool flag = false;
+
+        do
+        {
+            if (flag)
+                Console.WriteLine("Vui long nhap nam hop le (>0)!!!!");
+
+            Console.Write(message);
+            string s = Console.ReadLine();
+            flag = true;
+
+            if (int.TryParse(s, out temp) && temp > 0)
+                return temp;
+
+        } while (true);
+    }
+
     //Nhập tháng năm từ bàn phím
     public void Nhap()
     {
-        do
-        {
-            Console.Write("Nhap thang:");
-            iMonth = int.Parse(Console.ReadLine());
-            if (iMonth < 1 || iMonth > 12)
-                Console.WriteLine("Thang khong hop le, vui long nhap lai!!!");
-        } while (iMonth < 1 || iMonth > 12);
-        Console.Write("Nhap nam:");
-        iYear = int.Parse(Console.ReadLine());
+        iMonth = NhapThang("Nhap thang: ");
+        iYear = NhapNam("Nhap nam: ");
     }
 
     //Xuất tháng năm
