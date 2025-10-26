@@ -20,7 +20,12 @@
             switch (num)
             {
                 case 1: Bai01.Run(); break;
+                case 2: Bai02.Run(); break;
+                case 3: Bai03.Run(); break;
+                case 4: Bai04.Run(); break;
+                case 5: Bai05.Run(); break;
             }
+            Console.WriteLine("=====Ket thuc chuong trinh=====");
         }
     }
 }
