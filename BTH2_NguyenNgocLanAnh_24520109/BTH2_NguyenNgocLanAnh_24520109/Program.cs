@@ -9,34 +9,22 @@ namespace BTH2_NguyenNgocLanAnh_24520109
             int choice;
             do
             {
-                int n; //biến tạm lưu giá trị nhập vào để kiểm thử
-                string tmp;
-                bool flag = true; //đặt cờ báo hiệu lần nhập thứ nhất 
-                do
+                Console.WriteLine("----MENU----");
+                Console.WriteLine("1. Bai 01");
+                Console.WriteLine("2. Bai 02");
+                Console.WriteLine("3. Bai 03");
+                Console.WriteLine("4. Bai 04");
+                Console.WriteLine("5. Bai 05");
+                Console.WriteLine("0. Ket thuc chuong trinh");
+                Console.Write("Nhap lua chon: ");
+
+                if (!int.TryParse(Console.ReadLine(), out choice))
                 {
-                    Console.WriteLine("----MENU----");
-                    Console.WriteLine("1. Bai 01");
-                    Console.WriteLine("2. Bai 02");
-                    Console.WriteLine("3. Bai 03");
-                    Console.WriteLine("4. Bai 04");
-                    Console.WriteLine("5. Bai 05");
-                    Console.WriteLine("0. Ket thuc chuong trinh");
+                    Console.WriteLine("Lựa chọn không hợp lệ!");
+                    continue;
+                }
 
-                    Console.WriteLine("Nhap lua chon:");
-                    tmp = Console.ReadLine();
-
-                    if (!int.TryParse(tmp, out n) || n > 5 || n < 0)
-                    {
-                        Console.WriteLine("Vui long nhap so nguyen duong tu 0 den 5!!!!");
-                        flag = true;
-                    }
-                    else
-                    {
-                        flag = false;
-                    }
-                } while (flag); //chỉ nhận giá trị 0 - 5 cho num 
-
-                choice = n;
+                //Xử lý lựa chọn
                 switch (choice)
                 {
                     case 1: Bai01.Run(); break;

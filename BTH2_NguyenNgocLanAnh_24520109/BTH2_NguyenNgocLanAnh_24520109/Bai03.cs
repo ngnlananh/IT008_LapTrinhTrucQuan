@@ -4,13 +4,10 @@
     {
         public static void Run()
         {
+            cMaTran a = new cMaTran();
             int choice;
-            string tmp;
-            bool flag = false;
             do
             {
-                if (flag == false)
-                    Console.WriteLine("Vui long nhap so nguyen duong tu 1 den 5!!!!");
                 Console.WriteLine("===MENU BAI 3===");
                 Console.WriteLine("1. Nhap ma tran hai chieu.");
                 Console.WriteLine("2. Xuat ma tran hai chieu");
@@ -18,16 +15,27 @@
                 Console.WriteLine("4. Xuat cac so nguyen to trong ma tran");
                 Console.WriteLine("5. Cho biet dong nao co nhieu so nguyen nhat");
                 Console.WriteLine("0. Ket thuc BAI 3");
-
                 Console.WriteLine("Nhap lua chon:");
-                tmp = Console.ReadLine();
-                flag = false;
+                if (!int.TryParse(Console.ReadLine(), out choice) || choice < 0 || choice > 5)
+                {
+                    Console.WriteLine("Vui long nhap lai so hop le [0 - 5]!");
+                    continue;
+                }
 
-            } while (!int.TryParse(tmp, out choice) || choice < 0 || choice > 5);
-
-            cMaTran a = new cMaTran();
-            a.NhapMaTran();
-            a.XuatMaTran();
+                //Xử lý lựa chọn
+                switch (choice)
+                {
+                    case 0:
+                        Console.WriteLine("Ket thuc bai 3");
+                        return;
+                    case 1: 
+                        a.NhapMaTran();
+                        break;
+                    case 2:
+                        a.XuatMaTran();
+                        break;
+                }
+            } while (choice != 0);
         }
     }
 }
