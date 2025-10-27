@@ -31,6 +31,7 @@ namespace BTH2_NguyenNgocLanAnh_24520109
             return true;
         }
 
+        //Hàm nhập ma trận từ bàn phím 
         public void NhapMaTran()
         {
             //Nhập số dòng của ma trận
@@ -74,6 +75,7 @@ namespace BTH2_NguyenNgocLanAnh_24520109
             }
         }
 
+        //Xuất ma trận
         public void XuatMaTran()
         {
             Console.WriteLine("Ma tran: ");
@@ -85,6 +87,7 @@ namespace BTH2_NguyenNgocLanAnh_24520109
             }
         }
 
+        //Tìm phần tử nhập vào từ bàn phím 
         public bool TimPhanTu(int n)
         {
             bool flag = false;
@@ -104,6 +107,7 @@ namespace BTH2_NguyenNgocLanAnh_24520109
             return flag;
         }
 
+        //Kiểm tra ma trận có số nguyên tố không 
         public bool CoSNT()
         {
             for (int i = 0; i < iRow; i++)
@@ -115,6 +119,7 @@ namespace BTH2_NguyenNgocLanAnh_24520109
             return false;
         }
 
+        //Xuất cảc số nguyên tố có trong ma trận 
         public void XuatSNT()
         {
             if (!CoSNT())
@@ -137,6 +142,7 @@ namespace BTH2_NguyenNgocLanAnh_24520109
                 Console.WriteLine("Khong ton tai so nguyen to trong ma tran.");
         }
 
+        //Tìm dòng có nhiều số nguyên tố nhất trong ma trận 
         public int DongNhieuSNT()
         {
             if (!CoSNT())
