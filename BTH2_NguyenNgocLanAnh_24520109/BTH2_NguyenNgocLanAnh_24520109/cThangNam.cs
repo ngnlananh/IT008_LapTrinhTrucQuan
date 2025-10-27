@@ -12,9 +12,6 @@
             this.iYear = iYear;
         }
 
-        public int getMonth() { return iMonth; }
-        public int getYear() { return iYear; }
-
         //Hàm kiểm thử nhập tháng
         private int NhapThang(string message)
         {
