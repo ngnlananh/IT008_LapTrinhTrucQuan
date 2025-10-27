@@ -34,6 +34,27 @@
                     case 2:
                         a.XuatMaTran();
                         break;
+                    case 3:
+                        int n;
+                        while (true)
+                        {
+                            Console.Write("Nhap phan tu can tim: ");
+                            if (int.TryParse(Console.ReadLine(), out n))
+                                break;
+                            else
+                            {
+                                Console.Write("Vui long nhap lai so nguyen n! ");
+                                continue;
+                            }
+                        }
+                        a.TimPhanTu(n);
+                        break;
+                    case 4:
+                        a.XuatSNT();
+                        break;
+                    case 5:
+                        a.DongNhieuSNT();
+                        break;
                 }
             } while (choice != 0);
         }
