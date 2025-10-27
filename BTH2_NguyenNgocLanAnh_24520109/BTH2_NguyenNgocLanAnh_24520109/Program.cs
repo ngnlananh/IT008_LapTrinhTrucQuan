@@ -14,8 +14,6 @@ namespace BTH2_NguyenNgocLanAnh_24520109
                 bool flag = true; //đặt cờ báo hiệu lần nhập thứ nhất 
                 do
                 {
-                    if (flag == false)
-                        Console.WriteLine("Vui long nhap so nguyen duong tu 1 den 5!!!!");
                     Console.WriteLine("----MENU----");
                     Console.WriteLine("1. Bai 01");
                     Console.WriteLine("2. Bai 02");
@@ -26,8 +24,17 @@ namespace BTH2_NguyenNgocLanAnh_24520109
 
                     Console.WriteLine("Nhap lua chon:");
                     tmp = Console.ReadLine();
-                    flag = false;
-                } while (!int.TryParse(tmp, out n) || n > 5 || n < 0); //chỉ nhận giá trị 0 - 5 cho num 
+
+                    if (!int.TryParse(tmp, out n) || n > 5 || n < 0)
+                    {
+                        Console.WriteLine("Vui long nhap so nguyen duong tu 0 den 5!!!!");
+                        flag = true;
+                    }
+                    else
+                    {
+                        flag = false;
+                    }
+                } while (flag); //chỉ nhận giá trị 0 - 5 cho num 
 
                 choice = n;
                 switch (choice)

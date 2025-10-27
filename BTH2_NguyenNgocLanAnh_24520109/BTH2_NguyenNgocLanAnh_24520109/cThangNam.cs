@@ -19,18 +19,21 @@
             bool flag = false;
             do
             {
-                if (flag)
-                    Console.WriteLine("Vui long nhap thang hop le [1-12] !!!!");
-
                 Console.Write(message);
                 string s = Console.ReadLine();
                 flag = true;
 
                 // Chỉ chấp nhận khi là số nguyên trong khoảng 1-12
-                if (int.TryParse(s, out temp) && temp >= 1 && temp <= 12)
-                    return temp;
+                if (!int.TryParse(s, out temp) || temp > 12 || temp < 1)
+                {
+                    Console.WriteLine("Vui long nhap thang hop le [1-12] !!!!");
+                    flag = true;
+                }
+                else
+                    flag = false;
 
-            } while (true);
+            } while (flag);
+            return temp;
         }
 
         //Hàm kiểm thử nhập năm 
@@ -38,20 +41,23 @@
         {
             int temp;
             bool flag = false;
-
             do
             {
-                if (flag)
-                    Console.WriteLine("Vui long nhap nam hop le (>0)!!!!");
-
                 Console.Write(message);
                 string s = Console.ReadLine();
                 flag = true;
 
-                if (int.TryParse(s, out temp) && temp > 0)
-                    return temp;
+                // Chỉ chấp nhận khi là số nguyên trong khoảng 1-12
+                if (!int.TryParse(s, out temp) || temp < 0)
+                {
+                    Console.WriteLine("Vui long nhap thang hop le (>0) !!!!");
+                    flag = true;
+                }
+                else
+                    flag = false;
 
-            } while (true);
+            } while (flag);
+            return temp;
         }
 
         //Nhập tháng năm từ bàn phím
