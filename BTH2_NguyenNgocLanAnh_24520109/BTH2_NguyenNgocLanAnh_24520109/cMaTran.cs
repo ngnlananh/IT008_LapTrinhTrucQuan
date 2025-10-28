@@ -23,6 +23,7 @@ namespace BTH2_NguyenNgocLanAnh_24520109
 
         private bool isPrime(int n) // Kiểm tra số nguyên tố  
         {
+            n = Math.Abs(n);
             if (n < 2) return false;
             for (int i = 2; i * i <= n; i++)
             {
@@ -123,7 +124,10 @@ namespace BTH2_NguyenNgocLanAnh_24520109
         public void XuatSNT()
         {
             if (!CoSNT())
+            {
+                Console.WriteLine("Khong ton tai so nguyen to trong ma tran.");
                 return;
+            }
             List<int> result = new List<int>();
             for (int i = 0; i < iRow; i++)
             {
@@ -161,7 +165,7 @@ namespace BTH2_NguyenNgocLanAnh_24520109
                 if (countRow > maxCount)
                 {
                     maxCount = countRow;
-                    result = i;
+                    result = i; // Nếu có nhiều dòng có cùng số lượng SNT, mặc định lấy dòng đầu tiên
                 }
             }
             Console.WriteLine("Dong {0} co nhieu so nguyen to nhat trong ma tran.", result + 1);
