@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BTH2_NguyenNgocLanAnh_24520109
+﻿namespace BTH2_NguyenNgocLanAnh_24520109
 {
     internal class cKhuDat
     {
@@ -25,10 +19,29 @@ namespace BTH2_NguyenNgocLanAnh_24520109
         {
             Console.Write("Nhap dia diem: ");
             DiaDiem = Console.ReadLine();
-            Console.Write("Nhap gia ban: ");
-            GiaBan = double.Parse(Console.ReadLine());
-            Console.WriteLine("Nhap dien tich khu dat: ");
-            DienTich = double.Parse(Console.ReadLine());
+            while(true)
+            {
+                Console.Write("Nhap gia ban: ");
+                if (!double.TryParse(Console.ReadLine(), out GiaBan) || GiaBan < 0)
+                {
+                    Console.WriteLine("Gia ban khong hop le. Vui long nhap lai gia ban >= 0.");
+                    continue;
+                }
+                else
+                    break;
+            }
+
+            while (true)
+            {
+                Console.Write("Nhap dien tich: ");
+                if (!double.TryParse(Console.ReadLine(), out DienTich) || DienTich < 0)
+                {
+                    Console.WriteLine("Dien tich khong hop le. Vui long nhap lai dien tich >= 0.");
+                    continue;
+                }
+                else
+                    break;
+            }
         }
 
         //Phương thức xuất 

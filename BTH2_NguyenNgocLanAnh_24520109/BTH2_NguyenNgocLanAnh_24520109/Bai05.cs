@@ -8,7 +8,7 @@
             while(ds.Count() < n)
             {
                 Console.WriteLine("Nhap giao dich thu " + (i + 1) + ": ");
-                Console.Write("Chon loai giao dich: 1. Khu dat  2. Nha pho  3. Chung cu");
+                Console.Write("Chon loai giao dich: 1. Khu dat  2. Nha pho  3. Chung cu: ");
                 if (!int.TryParse(Console.ReadLine(), out int loai))
                 {
                     Console.WriteLine("Loai giao dich khong hop le. Vui long nhap lai.");
@@ -110,10 +110,12 @@
                 Console.WriteLine("4. Xuat danh sach cac khu dat co dien tich > 100m2 hoac nha pho co dien tich  > 60m2 va nam xay dung >= 2019");
                 Console.WriteLine("5. Tim kiem cac giao dich nha pho hoac chung cu");
                 Console.WriteLine("0. Thoat");
+                Console.Write("Nhap lua chon cua ban: ");
 
                 if (!int.TryParse(Console.ReadLine(), out choice))
                 {
                     Console.WriteLine("Lua chon khong hop le. Vui long chon lai.");
+                    choice = -1;
                     continue;
                 }               
 
@@ -121,8 +123,17 @@
                 {
                     case 1:
                         int num;
-                        Console.Write("Nhap so luong giao dich: ");
-                        num = int.Parse(Console.ReadLine());
+                        while (true)
+                        {
+                            Console.Write("Nhap so luong giao dich: ");
+                            if (!int.TryParse(Console.ReadLine(), out num) || num <= 0)
+                            {
+                                Console.WriteLine("So luong giao dich khong hop le. Vui long nhap lai so nguyen > 0.");
+                                continue;
+                            }
+                            else
+                                break;
+                        }
                         NhapDanhSach(ds, num);
                         break;
                     case 2:
