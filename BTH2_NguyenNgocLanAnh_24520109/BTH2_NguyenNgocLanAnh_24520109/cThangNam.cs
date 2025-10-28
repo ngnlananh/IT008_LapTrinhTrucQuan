@@ -48,7 +48,7 @@
                 flag = true;
 
                 // Chỉ chấp nhận khi là số nguyên trong khoảng 1-12
-                if (!int.TryParse(s, out temp) || temp < 0)
+                if (!int.TryParse(s, out temp) || temp <= 0)
                 {
                     Console.WriteLine("Vui long nhap thang hop le (>0) !!!!");
                     flag = true;

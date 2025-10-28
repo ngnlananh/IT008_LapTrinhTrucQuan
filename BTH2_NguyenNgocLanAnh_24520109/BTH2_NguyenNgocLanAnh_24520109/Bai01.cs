@@ -6,8 +6,9 @@
         {
             cThangNam a = new cThangNam();
             a.Nhap();
-            Console.Write("\t\tLich cua thang {0} nam {1}: ");
+            Console.Write("\t\tLich cua thang ");
             a.Xuat();
+            Console.Write(": ");
             Console.WriteLine();
             a.printCalendar();
         }

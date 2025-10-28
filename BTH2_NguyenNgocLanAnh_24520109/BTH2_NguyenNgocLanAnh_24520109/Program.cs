@@ -20,7 +20,7 @@ namespace BTH2_NguyenNgocLanAnh_24520109
 
                 if (!int.TryParse(Console.ReadLine(), out choice))
                 {
-                    Console.WriteLine("Lựa chọn không hợp lệ!");
+                    Console.WriteLine("Lua chon khong hop le!");
                     continue;
                 }
 
