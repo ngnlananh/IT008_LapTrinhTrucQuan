@@ -44,10 +44,10 @@ namespace Bai07
             }
             else if (btn.BackColor == Color.Blue) //Ghế đang chọn -> hủy chọn ghế
             {
-                btn.BackColor = Color.White; //Chuyển sang màu ghế chưa chọn
-                selectedSeats.Remove(btn); //Xóa ghế khỏi danh sách ghế đang chọn
+                btn.BackColor = Color.White;
+                selectedSeats.Remove(btn);
             }
-            textBox1.Text = SumCost().ToString(); //Cập nhật tổng tiền
+            textBox1.Text = SumCost().ToString();
         }
         private void btnChon_Click(object sender, EventArgs e)
         {
@@ -73,9 +73,8 @@ namespace Bai07
         private void btnHuy_Click(object sender, EventArgs e)
         {
             foreach (Button btn in selectedSeats)
-            {
-                btn.BackColor = Color.White; //Chuyển sang màu ghế chưa chọn
-            }
+                btn.BackColor = Color.White;
+            textBox1.Text = "0";
         }
         private void btnKetThuc_Click(object sender, EventArgs e)
         {
