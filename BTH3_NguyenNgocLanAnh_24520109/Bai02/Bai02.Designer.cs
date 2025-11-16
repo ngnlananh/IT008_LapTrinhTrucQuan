@@ -49,6 +49,7 @@
             this.Controls.Add(this.btnPaint);
             this.Name = "fBai02";
             this.Text = "Bai02";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.fBai02_Paint);
             this.ResumeLayout(false);
 
         }
