@@ -21,23 +21,23 @@
         private void InitializeComponent()
         {
             this.grbTTSv = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cmbChuyenNganh = new System.Windows.Forms.ComboBox();
-            this.txtbMSSV = new System.Windows.Forms.TextBox();
-            this.txtbHoTen = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.ckbNam = new System.Windows.Forms.CheckBox();
-            this.ckbNu = new System.Windows.Forms.CheckBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.lbListMon = new System.Windows.Forms.ListBox();
-            this.lbListChon = new System.Windows.Forms.ListBox();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.btnBo = new System.Windows.Forms.Button();
-            this.btnLuu = new System.Windows.Forms.Button();
             this.btnXoaChon = new System.Windows.Forms.Button();
+            this.btnLuu = new System.Windows.Forms.Button();
+            this.btnBo = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.lbListChon = new System.Windows.Forms.ListBox();
+            this.lbListMon = new System.Windows.Forms.ListBox();
+            this.ckbNu = new System.Windows.Forms.CheckBox();
+            this.ckbNam = new System.Windows.Forms.CheckBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtbHoTen = new System.Windows.Forms.TextBox();
+            this.txtbMSSV = new System.Windows.Forms.TextBox();
+            this.cmbChuyenNganh = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.grbTTSv.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -67,137 +67,15 @@
             this.grbTTSv.TabStop = false;
             this.grbTTSv.Text = "groupBox1";
             // 
-            // label1
+            // btnXoaChon
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(69, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(69, 56);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(69, 82);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "label3";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(69, 109);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "label4";
-            // 
-            // cmbChuyenNganh
-            // 
-            this.cmbChuyenNganh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbChuyenNganh.FormattingEnabled = true;
-            this.cmbChuyenNganh.Location = new System.Drawing.Point(180, 81);
-            this.cmbChuyenNganh.Name = "cmbChuyenNganh";
-            this.cmbChuyenNganh.Size = new System.Drawing.Size(234, 21);
-            this.cmbChuyenNganh.TabIndex = 4;
-            // 
-            // txtbMSSV
-            // 
-            this.txtbMSSV.Location = new System.Drawing.Point(180, 26);
-            this.txtbMSSV.Name = "txtbMSSV";
-            this.txtbMSSV.Size = new System.Drawing.Size(100, 20);
-            this.txtbMSSV.TabIndex = 5;
-            // 
-            // txtbHoTen
-            // 
-            this.txtbHoTen.Location = new System.Drawing.Point(180, 53);
-            this.txtbHoTen.Name = "txtbHoTen";
-            this.txtbHoTen.Size = new System.Drawing.Size(196, 20);
-            this.txtbHoTen.TabIndex = 6;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(69, 151);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "label5";
-            // 
-            // ckbNam
-            // 
-            this.ckbNam.AutoSize = true;
-            this.ckbNam.Location = new System.Drawing.Point(180, 109);
-            this.ckbNam.Name = "ckbNam";
-            this.ckbNam.Size = new System.Drawing.Size(80, 17);
-            this.ckbNam.TabIndex = 8;
-            this.ckbNam.Text = "checkBox1";
-            this.ckbNam.UseVisualStyleBackColor = true;
-            // 
-            // ckbNu
-            // 
-            this.ckbNu.AutoSize = true;
-            this.ckbNu.Location = new System.Drawing.Point(258, 109);
-            this.ckbNu.Name = "ckbNu";
-            this.ckbNu.Size = new System.Drawing.Size(80, 17);
-            this.ckbNu.TabIndex = 9;
-            this.ckbNu.Text = "checkBox2";
-            this.ckbNu.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(44, 374);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(700, 150);
-            this.dataGridView1.TabIndex = 2;
-            // 
-            // lbListMon
-            // 
-            this.lbListMon.FormattingEnabled = true;
-            this.lbListMon.Location = new System.Drawing.Point(68, 181);
-            this.lbListMon.Name = "lbListMon";
-            this.lbListMon.Size = new System.Drawing.Size(229, 95);
-            this.lbListMon.TabIndex = 10;
-            // 
-            // lbListChon
-            // 
-            this.lbListChon.FormattingEnabled = true;
-            this.lbListChon.Location = new System.Drawing.Point(343, 181);
-            this.lbListChon.Name = "lbListChon";
-            this.lbListChon.Size = new System.Drawing.Size(229, 95);
-            this.lbListChon.TabIndex = 11;
-            // 
-            // btnThem
-            // 
-            this.btnThem.Location = new System.Drawing.Point(302, 201);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(36, 23);
-            this.btnThem.TabIndex = 12;
-            this.btnThem.Text = "button1";
-            this.btnThem.UseVisualStyleBackColor = true;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-            // 
-            // btnBo
-            // 
-            this.btnBo.Location = new System.Drawing.Point(302, 230);
-            this.btnBo.Name = "btnBo";
-            this.btnBo.Size = new System.Drawing.Size(36, 23);
-            this.btnBo.TabIndex = 13;
-            this.btnBo.Text = "button2";
-            this.btnBo.UseVisualStyleBackColor = true;
-            this.btnBo.Click += new System.EventHandler(this.btnBo_Click);
+            this.btnXoaChon.Location = new System.Drawing.Point(328, 294);
+            this.btnXoaChon.Name = "btnXoaChon";
+            this.btnXoaChon.Size = new System.Drawing.Size(75, 23);
+            this.btnXoaChon.TabIndex = 15;
+            this.btnXoaChon.Text = "button4";
+            this.btnXoaChon.UseVisualStyleBackColor = true;
+            this.btnXoaChon.Click += new System.EventHandler(this.btnXoaChon_Click);
             // 
             // btnLuu
             // 
@@ -209,15 +87,137 @@
             this.btnLuu.UseVisualStyleBackColor = true;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
-            // btnXoaChon
+            // btnBo
             // 
-            this.btnXoaChon.Location = new System.Drawing.Point(328, 294);
-            this.btnXoaChon.Name = "btnXoaChon";
-            this.btnXoaChon.Size = new System.Drawing.Size(75, 23);
-            this.btnXoaChon.TabIndex = 15;
-            this.btnXoaChon.Text = "button4";
-            this.btnXoaChon.UseVisualStyleBackColor = true;
-            this.btnXoaChon.Click += new System.EventHandler(this.btnXoaChon_Click);
+            this.btnBo.Location = new System.Drawing.Point(302, 230);
+            this.btnBo.Name = "btnBo";
+            this.btnBo.Size = new System.Drawing.Size(36, 23);
+            this.btnBo.TabIndex = 13;
+            this.btnBo.Text = "button2";
+            this.btnBo.UseVisualStyleBackColor = true;
+            this.btnBo.Click += new System.EventHandler(this.btnBo_Click);
+            // 
+            // btnThem
+            // 
+            this.btnThem.Location = new System.Drawing.Point(302, 201);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(36, 23);
+            this.btnThem.TabIndex = 12;
+            this.btnThem.Text = "button1";
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
+            // lbListChon
+            // 
+            this.lbListChon.FormattingEnabled = true;
+            this.lbListChon.Location = new System.Drawing.Point(343, 181);
+            this.lbListChon.Name = "lbListChon";
+            this.lbListChon.Size = new System.Drawing.Size(229, 95);
+            this.lbListChon.TabIndex = 11;
+            // 
+            // lbListMon
+            // 
+            this.lbListMon.FormattingEnabled = true;
+            this.lbListMon.Location = new System.Drawing.Point(68, 181);
+            this.lbListMon.Name = "lbListMon";
+            this.lbListMon.Size = new System.Drawing.Size(229, 95);
+            this.lbListMon.TabIndex = 10;
+            // 
+            // ckbNu
+            // 
+            this.ckbNu.AutoSize = true;
+            this.ckbNu.Location = new System.Drawing.Point(258, 109);
+            this.ckbNu.Name = "ckbNu";
+            this.ckbNu.Size = new System.Drawing.Size(80, 17);
+            this.ckbNu.TabIndex = 9;
+            this.ckbNu.Text = "checkBox2";
+            this.ckbNu.UseVisualStyleBackColor = true;
+            // 
+            // ckbNam
+            // 
+            this.ckbNam.AutoSize = true;
+            this.ckbNam.Location = new System.Drawing.Point(180, 109);
+            this.ckbNam.Name = "ckbNam";
+            this.ckbNam.Size = new System.Drawing.Size(80, 17);
+            this.ckbNam.TabIndex = 8;
+            this.ckbNam.Text = "checkBox1";
+            this.ckbNam.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(69, 151);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "label5";
+            // 
+            // txtbHoTen
+            // 
+            this.txtbHoTen.Location = new System.Drawing.Point(180, 53);
+            this.txtbHoTen.Name = "txtbHoTen";
+            this.txtbHoTen.Size = new System.Drawing.Size(196, 20);
+            this.txtbHoTen.TabIndex = 6;
+            // 
+            // txtbMSSV
+            // 
+            this.txtbMSSV.Location = new System.Drawing.Point(180, 26);
+            this.txtbMSSV.Name = "txtbMSSV";
+            this.txtbMSSV.Size = new System.Drawing.Size(100, 20);
+            this.txtbMSSV.TabIndex = 5;
+            // 
+            // cmbChuyenNganh
+            // 
+            this.cmbChuyenNganh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbChuyenNganh.FormattingEnabled = true;
+            this.cmbChuyenNganh.Location = new System.Drawing.Point(180, 81);
+            this.cmbChuyenNganh.Name = "cmbChuyenNganh";
+            this.cmbChuyenNganh.Size = new System.Drawing.Size(234, 21);
+            this.cmbChuyenNganh.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(69, 109);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "label4";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(69, 82);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "label3";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(69, 56);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "label2";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(69, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "label1";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(44, 374);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(700, 150);
+            this.dataGridView1.TabIndex = 2;
             // 
             // fBai09
             // 

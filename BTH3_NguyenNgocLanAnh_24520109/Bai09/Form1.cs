@@ -88,8 +88,13 @@ namespace Bai09
                 MessageBox.Show("Chỉ được chọn giới tính là Nam hoặc Nữ. Vui lòng chọn lại!", "Warning", MessageBoxButtons.OK);
                 return;
             }
-            //Nhập dữ liệu sau khi kiểm thử
-            string gt = ckbNam.Checked ? "Nam" : "Nữ";
+            else if (!ckbNam.Checked && !ckbNu.Checked)
+            {
+                MessageBox.Show("Vui lòng chọn giới tính!", "Warning", MessageBoxButtons.OK);
+                return;
+            }
+                //Nhập dữ liệu sau khi kiểm thử
+                string gt = ckbNam.Checked ? "Nam" : "Nữ";
             dataGridView1.Rows.Add(
                 txtbMSSV.Text,
                 txtbHoTen.Text,
