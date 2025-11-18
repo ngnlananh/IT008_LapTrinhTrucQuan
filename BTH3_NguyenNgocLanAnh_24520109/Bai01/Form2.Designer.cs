@@ -28,31 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbChildEvents = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // lbChildEvents
+            // button1
             // 
-            this.lbChildEvents.FormattingEnabled = true;
-            this.lbChildEvents.Location = new System.Drawing.Point(54, 37);
-            this.lbChildEvents.Name = "lbChildEvents";
-            this.lbChildEvents.Size = new System.Drawing.Size(418, 238);
-            this.lbChildEvents.TabIndex = 0;
+            this.button1.Location = new System.Drawing.Point(208, 37);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Click me";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.MouseHover += new System.EventHandler(this.button1_MouseHover);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(75, 78);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(339, 20);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(536, 304);
-            this.Controls.Add(this.lbChildEvents);
+            this.ClientSize = new System.Drawing.Size(492, 170);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.button1);
             this.Name = "Form2";
             this.Text = "Bai1_Form2";
+            this.DoubleClick += new System.EventHandler(this.Form2_DoubleClick);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ListBox lbChildEvents;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Bai01
@@ -16,15 +9,6 @@ namespace Bai01
         public Form2()
         {
             InitializeComponent();
-            lbChildEvents.Font = new Font("Cambria", 10);
-            this.Load += Form2_Load;
-            this.Activated += Form2_Activated;
-            this.Deactivate += Form2_Deactivated;
-            this.FormClosing += Form2_FormClosing;
-            this.FormClosed += Form2_FormClosed;
-            this.Resize += Form2_Resize;
-            this.GotFocus += Form2_GotFocus;
-            this.Click += Form2_Click;
         }
 
         public Form2(Action<string> logAction)
@@ -40,55 +24,34 @@ namespace Bai01
             this.Resize += (s, e) => Log("[Form2] Resize");
             this.GotFocus += (s, e) => Log("[Form2] GotFocus");
             this.Click += (s, e) => Log("[Form2] Click");
+            this.Disposed += (s, e) => Log("[Form2] Disposed");
+            this.KeyPreview = true;
+            this.KeyDown += (s, e) => Log("[Form2] KeyDown");
+            this.Paint += (s, e) => Log("[Form2] Paint");
         }
-        protected override void OnHandleCreated(EventArgs e)
-        {
-            base.OnHandleCreated(e);
-            Log("[Form2] OnHandleCreated");
-        }
-
-        protected override void OnHandleDestroyed(EventArgs e)
-        {
-            Log("[Form2] OnHandleDestroyed");
-            base.OnHandleDestroyed(e);
-        }
-
         private void Log(string evt)
         {
             logAction?.Invoke(evt);
         }
 
-        private void Form2_Load(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            Log("[Form2] Load");
+            Log("Button Clicked!");
         }
-        private void Form2_Activated(object sender, EventArgs e)
+
+        private void button1_MouseHover(object sender, EventArgs e)
         {
-            Log("[Form2] Activated");
+            Log("Button MouseHover!");
         }
-        private void Form2_Deactivated(object sender, EventArgs e)
+
+        private void Form2_DoubleClick(object sender, EventArgs e)
         {
-            Log("[Form2] Deactivated");
+            Log("Button DoubleClick!");
         }
-        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            Log("[Form2] FormClosing");
-        }
-        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Log("[Form2] FormClosed");
-        }
-        private void Form2_Resize(object sender, EventArgs e)
-        {
-            Log("[Form2] Resize");
-        }
-        private void Form2_GotFocus(object sender, EventArgs e)
-        {
-            Log("[Form2] GotFocus");
-        }
-        private void Form2_Click(object sender, EventArgs e)
-        {
-            Log("[Form2] Click");
+            Log($"[TextBox] TextChanged: {textBox1.Text}");
         }
     }
 }

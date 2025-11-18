@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace Bai01
 {
@@ -23,8 +18,8 @@ namespace Bai01
             log = new ListBox
             {
                 Font = new Font("Cambria", 10),
-                Height = 200,
-                Width = 200,
+                Height = this.ClientSize.Height - 100,
+                Width = this.ClientSize.Width - 20,
                 Location = new Point(10, 50)
             };
 
@@ -39,15 +34,6 @@ namespace Bai01
 
             Controls.Add(log);
             Controls.Add(btnOpenChild);
-            this.Load += Form1_Load;
-            this.Activated += Form1_Activated;
-            this.Deactivate += Form1_Deactivated;
-            this.FormClosing += Form1_FormClosing;
-            this.FormClosed += Form1_FormClosed;
-            this.Resize += Form1_Resize;
-            this.GotFocus += Form1_GotFocus;
-            this.Click += Form1_Click;
-            this.Shown += Form1_Shown;
         }
         private void Log(string eventName)
         {
@@ -103,6 +89,11 @@ namespace Bai01
         private void Form1_Shown(object sender, EventArgs e)
         {
             Log("[Form1] Shown");
+        }
+
+        private void Form1_Disposed(object sender, EventArgs e)
+        {
+            Log("[Form1] Disposed");
         }
     }
 }
