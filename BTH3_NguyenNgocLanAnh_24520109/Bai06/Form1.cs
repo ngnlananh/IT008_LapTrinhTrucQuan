@@ -8,6 +8,7 @@ namespace Bai06
         double result = 0; //lưu kết quả phép tính
         string operation = ""; //lưu phép toán hiện tại
         bool isOperationPressed = false; //đánh dấu nhấn vào nút phép tính
+        double memory = 0; // biến lưu bộ nhớ
         public fBai06()
         {
             InitializeComponent();
@@ -99,5 +100,34 @@ namespace Bai06
             double value = double.Parse(textBox1.Text);
             textBox1.Text = (value / 100).ToString();
         }
+        private void btnMS_Click(object sender, EventArgs e)
+        {
+            //Lưu giá trị hiện tại vào bộ nhớ
+            double value;
+            if (double.TryParse(textBox1.Text, out value))
+            {
+                memory = value;
+            }
+        }
+        private void btnMR_Click(object sender, EventArgs e)
+        {
+            //Hiển thị giá trị trong bộ nhớ vào textbox
+            textBox1.Text = memory.ToString();
+        }
+        private void btnMC_Click(object sender, EventArgs e)
+        {
+            //Xóa bộ nhớ
+            memory = 0;
+        }
+        private void btnMplus_Click(object sender, EventArgs e)
+        {
+            //Cộng giá trị hiện tại vào bộ nhớ
+            double value;
+            if (double.TryParse(textBox1.Text, out value))
+            {
+                memory += value;
+            }
+        }
+
     }
 }

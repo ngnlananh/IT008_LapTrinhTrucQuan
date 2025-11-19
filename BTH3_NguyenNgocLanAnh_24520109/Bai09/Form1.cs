@@ -51,24 +51,24 @@ namespace Bai09
 
         private void btnThem_Click(object sender, System.EventArgs e)
         {
-            if (lbListMon.SelectedItem != null)
+            if (lbListMon.SelectedItems.Count > 0)
             {
                 lbListChon.Items.Add(lbListMon.SelectedItem);
                 lbListMon.Items.Remove(lbListMon.SelectedItem);
             }
             else
-                MessageBox.Show("Vui lòng chọn môn học để thêm");
+                MessageBox.Show("Vui lòng chọn môn học để thêm","Warning");
         }
 
         private void btnBo_Click(object sender, System.EventArgs e)
         {
-            if (lbListChon.SelectedItems != null)
+            if (lbListChon.SelectedItems.Count > 0)
             {
                 lbListMon.Items.Add(lbListChon.SelectedItem);
                 lbListChon.Items.Remove(lbListChon.SelectedItem);
             }
             else
-                MessageBox.Show("Vui lòng chọn môn học để xóa");
+                MessageBox.Show("Vui lòng chọn môn học để xóa","Warning");
         }
 
         private void btnLuu_Click(object sender, System.EventArgs e)
@@ -76,7 +76,7 @@ namespace Bai09
             //Kiểm thử input
             if (txtbMSSV.Text == "" || txtbHoTen.Text == "")
             {
-                MessageBox.Show("Vui lòng nhập MSSV và Họ Tên!");
+                MessageBox.Show("Vui lòng nhập MSSV và Họ Tên!","Warning");
                 return;
             }
             if (!int.TryParse(txtbMSSV.Text, out int mssv) || mssv <= 0)

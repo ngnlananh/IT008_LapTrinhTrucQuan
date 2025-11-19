@@ -72,6 +72,7 @@ namespace Bai07
             foreach (Button btn in selectedSeats)
                 btn.BackColor = Color.White;
             textBox1.Text = "0";
+            selectedSeats.Clear();
         }
         private void btnKetThuc_Click(object sender, EventArgs e)
         {
