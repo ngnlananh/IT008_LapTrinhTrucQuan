@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Xml.Serialization;
 
 namespace Bai01
 {
@@ -12,6 +11,7 @@ namespace Bai01
         public fBai01()
         {
             InitializeComponent();
+            //Tạo Listbox và Button mở form2 cho form1
             Text = "Form1 - Parent";
             Size = new Size(800, 500);
 
@@ -20,7 +20,8 @@ namespace Bai01
                 Font = new Font("Cambria", 10),
                 Height = this.ClientSize.Height - 100,
                 Width = this.ClientSize.Width - 20,
-                Location = new Point(10, 50)
+                Location = new Point(10, 50),
+
             };
 
             btnOpenChild = new Button
@@ -38,6 +39,12 @@ namespace Bai01
         private void Log(string eventName)
         {
             log.Items.Add($"{DateTime.Now:HH:mm:ss} - {eventName}");
+            //Tự động cuộn xuống mục cuối cùng
+            if (log.Items.Count > 0)
+            {
+                // Chọn mục cuối cùng
+                log.SelectedIndex = log.Items.Count - 1;
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)

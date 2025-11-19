@@ -15,11 +15,13 @@ namespace Bai02
         {
             this.Refresh();
         }
-        private void fBai02_Paint(object sender, PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs e)
         {
+            //Random ngẫu nhiên 2 số x và y
             Random rd = new Random();
-            int x = rd.Next(0, 200);
-            int y = rd.Next(0, 200);
+            int x = rd.Next(0, 500);
+            int y = rd.Next(0, 300);
+            //Tạo Font và Brush để vẽ
             Font f = new Font("Consolas", 25, FontStyle.Bold);
             Brush br = new SolidBrush(Color.DarkRed);
             e.Graphics.DrawString("Paint Event", f, br, x, y);

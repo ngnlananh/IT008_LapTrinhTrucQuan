@@ -18,6 +18,7 @@ namespace Bai03
 
         private void btnChangeColor_Click(object sender, EventArgs e)
         {
+            //Tạo ngẫu nhiên màu
             Random r = new Random();
             Color randomColor = Color.FromArgb(r.Next(256), r.Next(256), r.Next(256));
             this.BackColor = randomColor;

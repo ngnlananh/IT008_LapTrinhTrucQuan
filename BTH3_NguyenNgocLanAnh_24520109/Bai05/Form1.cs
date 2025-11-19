@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace Bai05
 {
-    public partial class Bai05 : Form
+    public partial class fBai05 : Form
     {
-        public Bai05()
+        public fBai05()
         {
             InitializeComponent();
             label1.Text = "Number 1:";
@@ -29,28 +29,55 @@ namespace Bai05
             button4.Location = new Point(200, 120);
         }
 
+        private bool check() // kiểm thử input
+        {
+            if (!double.TryParse(textBox1.Text.Trim(), out double num1) || !double.TryParse(textBox2.Text.Trim(), out double num2))
+            {
+                MessageBox.Show("Vui lòng nhập số nguyên hoặc số thực!", "Warning");
+                return false;
+            }
+            return true;
+        }
+
         private void button1_Click(object sender, EventArgs e) //phep cong
         {
-            double ans = double.Parse(textBox1.Text) + double.Parse(textBox2.Text);
-            textBox3.Text = ans.ToString();
+            if (check())
+            {
+                double ans = double.Parse(textBox1.Text) + double.Parse(textBox2.Text);
+                textBox3.Text = ans.ToString();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e) //phep tru
         {
-            double ans = double.Parse(textBox1.Text) - double.Parse(textBox2.Text);
-            textBox3.Text = ans.ToString();
+            if (check())
+            {
+                double ans = double.Parse(textBox1.Text) - double.Parse(textBox2.Text);
+                textBox3.Text = ans.ToString();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e) //phep nhan
         {
-            double ans = double.Parse(textBox1.Text) * double.Parse(textBox2.Text);
-            textBox3.Text = ans.ToString();
+            if (check())
+            {
+                double ans = double.Parse(textBox1.Text) * double.Parse(textBox2.Text);
+                textBox3.Text = ans.ToString();
+            }
         }
 
         private void button4_Click(object sender, EventArgs e) //phep chia
         {
-            double ans = double.Parse(textBox1.Text) / double.Parse(textBox2.Text);
-            textBox3.Text = ans.ToString();
+            if (check())
+            {
+                if (double.Parse(textBox2.Text) == 0)
+                {
+                    MessageBox.Show("Không thể chia cho 0! Vui lòng thử lại!", "Warning", MessageBoxButtons.OK);
+                    return;
+                }
+                double ans = double.Parse(textBox1.Text) / double.Parse(textBox2.Text);
+                textBox3.Text = ans.ToString();
+            }
         }
     }
 }

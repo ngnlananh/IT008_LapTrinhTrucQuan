@@ -13,7 +13,7 @@ namespace Bai05
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Bai05());
+            Application.Run(new fBai05());
         }
     }
 }

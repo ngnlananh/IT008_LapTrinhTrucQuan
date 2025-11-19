@@ -1,6 +1,6 @@
 ﻿namespace Bai05
 {
-    partial class Bai05
+    partial class fBai05
     {
         private System.ComponentModel.IContainer components = null;
         protected override void Dispose(bool disposing)
@@ -120,7 +120,7 @@
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 9;
             // 
-            // Bai05
+            // fBai05
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -135,8 +135,8 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Bai05";
-            this.Text = "Form1";
+            this.Name = "fBai05";
+            this.Text = "Bai05";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Bai09
 {
@@ -78,9 +79,9 @@ namespace Bai09
                 MessageBox.Show("Vui lòng nhập MSSV và Họ Tên!");
                 return;
             }
-            if (!int.TryParse(txtbMSSV.Text, out int mssv))
+            if (!int.TryParse(txtbMSSV.Text, out int mssv) || mssv <= 0)
             {
-                MessageBox.Show("Mã Số Sinh Viên phải là dãy số nguyên. Vui lòng nhập lại!", "Warning", MessageBoxButtons.OK);
+                MessageBox.Show("Mã Số Sinh Viên phải là dãy số nguyên dương. Vui lòng nhập lại!", "Warning", MessageBoxButtons.OK);
                 return;
             }
             if (ckbNam.Checked && ckbNu.Checked)
@@ -93,19 +94,44 @@ namespace Bai09
                 MessageBox.Show("Vui lòng chọn giới tính!", "Warning", MessageBoxButtons.OK);
                 return;
             }
-                //Nhập dữ liệu sau khi kiểm thử
-                string gt = ckbNam.Checked ? "Nam" : "Nữ";
-            dataGridView1.Rows.Add(
-                txtbMSSV.Text,
-                txtbHoTen.Text,
-                cmbChuyenNganh.Text,
-                gt,
-                lbListChon.Items.Count
-            );
-            //trả lại trạng thái ban đầu cho các item sau khi nhập
+
+            // giới tính
+            string gt = ckbNam.Checked ? "Nam" : "Nữ";
+
+            // tìm MSSV đã tồn tại chưa
+            int index = -1;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (row.Cells[0].Value?.ToString() == txtbMSSV.Text)
+                {
+                    index = row.Index;
+                    break;
+                }
+            }
+
+            // nếu MSSV đã tồn tại, cập nhật thông tin 
+            if (index != -1)
+            {
+                var r = dataGridView1.Rows[index];
+                r.Cells[1].Value = txtbHoTen.Text;
+                r.Cells[2].Value = cmbChuyenNganh.Text;
+                r.Cells[3].Value = gt;
+                r.Cells[4].Value = lbListChon.Items.Count;
+            }
+            else // Nếu MSSV chưa tồn tại, thêm mới dữ liệu
+            {
+                dataGridView1.Rows.Add(
+                    txtbMSSV.Text,
+                    txtbHoTen.Text,
+                    cmbChuyenNganh.Text,
+                    gt,
+                    lbListChon.Items.Count
+                );
+            }
+            //trả lại trạng thái ban đầu cho các item sau khi thêm/cập nhật
             txtbHoTen.Clear();
             txtbMSSV.Clear();
-            cmbChuyenNganh.Items.Clear();
+            cmbChuyenNganh.SelectedIndex = -1;
             ckbNam.Checked = false;
             ckbNu.Checked = false;
             foreach (var item in lbListChon.Items)

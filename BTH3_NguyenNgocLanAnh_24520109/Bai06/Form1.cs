@@ -5,9 +5,9 @@ namespace Bai06
 {
     public partial class fBai06 : Form
     {
-        double result = 0;
-        string operation = "";
-        bool isOperationPressed = false;
+        double result = 0; //lưu kết quả phép tính
+        string operation = ""; //lưu phép toán hiện tại
+        bool isOperationPressed = false; //đánh dấu nhấn vào nút phép tính
         public fBai06()
         {
             InitializeComponent();
@@ -24,19 +24,25 @@ namespace Bai06
         private void operator_Click(object sender, EventArgs e)
         {
             Button b = (Button)sender;
+            if (!string.IsNullOrEmpty(operation))
+            {
+                //tính phép toán phía trước
+                btnEqual_Click(sender, e);
+            }
             operation = b.Text;
             result = double.Parse(textBox1.Text);
             isOperationPressed = true;
         }
         private void btnClear_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "0.";
+            //Xóa toàn bộ phép toán đang thực hiện
+            textBox1.Text = "0";
             result = 0;
             operation = "";
         }
         private void btnCE_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "0"; // chỉ xóa nội dung đang nhập
+            textBox1.Text = "0"; //chỉ xóa số đang nhập
         }
         private void btnEqual_Click(object sender, EventArgs e)
         {
@@ -48,10 +54,16 @@ namespace Bai06
                 case "*": textBox1.Text = (result * second).ToString(); break;
                 case "/":
                     if (second != 0)
+                    {
                         textBox1.Text = (result / second).ToString();
+                        break;
+                    }
                     else
-                        textBox1.Text = "Error";
-                    break;
+                    {
+                        MessageBox.Show("Không thể chia cho 0!", "Error");
+                        textBox1.Text = "0";
+                        return;
+                    }
             }
             result = double.Parse(textBox1.Text);
             operation = "";

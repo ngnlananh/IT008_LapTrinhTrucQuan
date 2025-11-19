@@ -11,6 +11,7 @@ namespace Bai01
             InitializeComponent();
         }
 
+        //Hàm khởi tạo Form2 có tham số
         public Form2(Action<string> logAction)
         {
             InitializeComponent();
