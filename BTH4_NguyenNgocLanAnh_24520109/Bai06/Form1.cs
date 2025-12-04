@@ -7,13 +7,13 @@ namespace Bai06
 {
     public partial class Form1 : Form
     {
+        private ToolTip toolTip = new ToolTip();
         public Form1()
         {
             InitializeComponent();
             // Thêm ToolTip cho các điều khiển
-            ToolTip toolTip = new ToolTip();
-            toolTip.SetToolTip(txtSource, "Chọn thư mục chứa tập tin cần sao chép");
-            toolTip.SetToolTip(txtDestination, "Chọn thư mục đích để lưu tập tin");
+            toolTip.SetToolTip(btnBrowseSource, "Chọn thư mục chứa tập tin cần sao chép");
+            toolTip.SetToolTip(btnBrowseDestination, "Chọn thư mục đích để lưu tập tin");
             toolTip.SetToolTip(btnCopy, "Bấm để bắt đầu sao chép tập tin");
         }
 
@@ -68,6 +68,7 @@ namespace Bai06
                 string destFile = Path.Combine(destinationPath, fileName);
 
                 lblStatus.Text = $"Đang sao chép: {fileName}";
+                toolTip.SetToolTip(lblStatus, $"Đang sao chép: {fileName}");
                 await Task.Run(() => File.Copy(file, destFile, true));
 
                 progressBar.Value += 1;
