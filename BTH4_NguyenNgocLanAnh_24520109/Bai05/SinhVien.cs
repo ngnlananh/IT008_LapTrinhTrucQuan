@@ -2,9 +2,9 @@
 {
     public class SinhVien
     {
-        public int MaSV { get; set; }
+        public int MSSV { get; set; }
         public string Ten { get; set; }
-        public string Khoa { get; set; }
+        public string Khoa { get; set; }   // lưu tên khoa
         public double DiemTB { get; set; }
     }
 }

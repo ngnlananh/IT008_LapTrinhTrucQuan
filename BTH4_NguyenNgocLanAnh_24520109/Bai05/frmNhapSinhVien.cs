@@ -1,15 +1,33 @@
 ﻿using System;
-using System.Linq;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+
 
 namespace Bai05
 {
     public partial class frmNhapSinhVien : Form
     {
-        public SinhVien SinhVienMoi { get; private set; }
+        // Kết nối CSDL QuanLySinhVien
+        string connectionString = @"Server=localhost; Database=QuanLySinhVien;Integrated Security=True;";
+        public SinhVien SinhVienMoi { get; set; }
         public frmNhapSinhVien()
         {
             InitializeComponent();
+            LoadDataKhoa();
+        }
+        private void LoadDataKhoa()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = @"SELECT TENKHOA FROM KHOA";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while(reader.Read())
+                {
+                    cboKhoa.Items.Add(reader["TENKHOA"].ToString());
+                }
+            }
         }
         private void btnThemMoi_Click(object sender, EventArgs e)
         {
@@ -29,28 +47,43 @@ namespace Bai05
                 return;
             }
             // Kiểm tra điểm TB có hợp lệ không
-            if (!double.TryParse(txtDiemTB.Text, out double diem))
+            if (!double.TryParse(txtDiemTB.Text, out double diem) || diem < 0 || diem > 10)
             {
                 MessageBox.Show("Điểm trung bình phải là số!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Kiểm tra điểm TB trong khoảng 0–10
-            if (diem < 0 || diem > 10)
+            // Insert vao CSDL
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                MessageBox.Show("Điểm trung bình phải nằm trong khoảng từ 0 đến 10!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+                connection.Open();
+                string query = @"INSERT INTO SINHVIEN (MSSV, TEN, KHOA, DIEMTB) "
+                                + "VALUES (@MSSV, @TEN, @KHOA, @DIEMTB)";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@MSSV", maSV);
+                command.Parameters.AddWithValue("@TEN", txtTenSV.Text);
+                command.Parameters.AddWithValue("@KHOA", cboKhoa.SelectedItem.ToString());
+                command.Parameters.AddWithValue("@DIEMTB", diem);
 
-            // Nếu hợp lệ --> tạo đối tượng SinhVien
+                try
+                {
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("Thêm sinh viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi thêm sinh viên: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            // Tạo đối tượng SinhVienMoi để trả về frmMain
             SinhVienMoi = new SinhVien
             {
-                MaSV = int.Parse(txtMaSV.Text),
+                MSSV = maSV,
                 Ten = txtTenSV.Text,
-                Khoa = cboKhoa.SelectedItem.ToString(),
+                Khoa = cboKhoa.Text, // hiển thị tên khoa
                 DiemTB = diem
             };
-
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

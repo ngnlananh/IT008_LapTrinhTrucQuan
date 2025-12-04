@@ -114,13 +114,6 @@
             this.cboKhoa.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboKhoa.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.cboKhoa.FormattingEnabled = true;
-            this.cboKhoa.Items.AddRange(new object[] {
-            "Công nghệ Phần mềm",
-            "Khoa học dữ liệu",
-            "Kỹ thuật máy tính",
-            "Trí tuệ nhân tạo",
-            "Khoa học máy tính",
-            "An toàn thông tin"});
             this.cboKhoa.Location = new System.Drawing.Point(218, 129);
             this.cboKhoa.Name = "cboKhoa";
             this.cboKhoa.Size = new System.Drawing.Size(269, 23);

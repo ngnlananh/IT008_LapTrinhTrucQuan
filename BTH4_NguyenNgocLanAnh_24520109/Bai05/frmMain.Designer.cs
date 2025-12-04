@@ -39,11 +39,6 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.txbFindStudent = new System.Windows.Forms.ToolStripTextBox();
             this.dgvStudent = new System.Windows.Forms.DataGridView();
-            this.colSTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMSSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTenSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colKhoa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDTB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).BeginInit();
@@ -131,58 +126,11 @@
             // dgvStudent
             // 
             this.dgvStudent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStudent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colSTT,
-            this.colMSSV,
-            this.colTenSV,
-            this.colKhoa,
-            this.colDTB});
             this.dgvStudent.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvStudent.Location = new System.Drawing.Point(0, 53);
             this.dgvStudent.Name = "dgvStudent";
             this.dgvStudent.Size = new System.Drawing.Size(944, 397);
             this.dgvStudent.TabIndex = 2;
-            // 
-            // colSTT
-            // 
-            this.colSTT.HeaderText = "STT";
-            this.colSTT.Name = "colSTT";
-            this.colSTT.ReadOnly = true;
-            this.colSTT.Width = 150;
-            // 
-            // colMSSV
-            // 
-            this.colMSSV.DataPropertyName = "MaSV";
-            this.colMSSV.HeaderText = "Mã Số SV";
-            this.colMSSV.Name = "colMSSV";
-            this.colMSSV.ReadOnly = true;
-            this.colMSSV.Width = 150;
-            // 
-            // colTenSV
-            // 
-            this.colTenSV.DataPropertyName = "Ten";
-            this.colTenSV.HeaderText = "Tên Sinh Viên";
-            this.colTenSV.Name = "colTenSV";
-            this.colTenSV.ReadOnly = true;
-            this.colTenSV.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.colTenSV.Width = 300;
-            // 
-            // colKhoa
-            // 
-            this.colKhoa.DataPropertyName = "Khoa";
-            this.colKhoa.HeaderText = "Khoa";
-            this.colKhoa.Name = "colKhoa";
-            this.colKhoa.ReadOnly = true;
-            this.colKhoa.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.colKhoa.Width = 200;
-            // 
-            // colDTB
-            // 
-            this.colDTB.DataPropertyName = "DiemTB";
-            this.colDTB.HeaderText = "Điểm TB";
-            this.colDTB.Name = "colDTB";
-            this.colDTB.ReadOnly = true;
-            this.colDTB.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // frmMain
             // 
@@ -217,11 +165,6 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripTextBox txbFindStudent;
         private System.Windows.Forms.DataGridView dgvStudent;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSTT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colMSSV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTenSV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colKhoa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDTB;
     }
 }
 
