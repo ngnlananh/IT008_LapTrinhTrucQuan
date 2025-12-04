@@ -4,7 +4,7 @@
     {
         public int MSSV { get; set; }
         public string Ten { get; set; }
-        public string Khoa { get; set; }   // lưu tên khoa
+        public int Khoa { get; set; }   // lưu mã khoa
         public double DiemTB { get; set; }
     }
 }

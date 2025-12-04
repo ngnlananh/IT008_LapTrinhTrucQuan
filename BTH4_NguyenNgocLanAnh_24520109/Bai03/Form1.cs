@@ -19,11 +19,12 @@ namespace Bai03
         {
             var dialog = new OpenFileDialog(); // Tạo hộp thoại mở file
             // Bộ lọc để chỉ hiển thị các định dạng file media
-            dialog.Filter = "AVI File | *.avi | MPEG File | *.mpeg | WAV File | *.wav |"
-                + "MIDI File | *.midi | MP4 File| *.mp4 | MP3 File| *.mp3";
+            dialog.Filter = "AVI File (*.avi)|*.avi|MPEG File (*.mpeg)|*.mpeg|WAV File (*.wav)|*.wav|MIDI File (*.midi)" +
+                "|*.midi|MP4 File (*.mp4)|*.mp4|MP3 File (*.mp3)|*.mp3";
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 media1.URL = dialog.FileName; // Thiết lập đường dẫn file cho điều khiển media1
+                media1.Ctlcontrols.play(); // Phát file media
             }
         }
 
@@ -31,7 +32,7 @@ namespace Bai03
         {
             DateTime now = DateTime.Now; // Lấy thời gian hiện tại
             // Cập nhật lblTimer với định dạng ngày và giờ
-            lblTimer.Text = "Hôm nay là ngày " + now.ToString("dd/mm/yyyy")
+            toolStripStatusLabel1.Text = "Hôm nay là ngày " + now.ToString("dd/MM/yyyy")
                 + " Bây giờ là " + now.ToString("hh:mm:ss tt");
         }
     }

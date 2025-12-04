@@ -15,6 +15,7 @@ namespace Bai06
             toolTip.SetToolTip(btnBrowseSource, "Chọn thư mục chứa tập tin cần sao chép");
             toolTip.SetToolTip(btnBrowseDestination, "Chọn thư mục đích để lưu tập tin");
             toolTip.SetToolTip(btnCopy, "Bấm để bắt đầu sao chép tập tin");
+            lblStatus.Text = "Đang sao chép:";
         }
 
         private void btnBrowseDestination_Click(object sender, EventArgs e)
@@ -45,7 +46,6 @@ namespace Bai06
 
         private async void btnCopy_Click(object sender, EventArgs e)
         {
-            // Lấy đường dẫn từ TextBox
             string sourcePath = txtSource.Text;
             string destinationPath = txtDestination.Text;
 
@@ -55,25 +55,37 @@ namespace Bai06
                 return;
             }
 
-            // Lấy danh sách tập tin trong thư mục nguồn
             string[] files = Directory.GetFiles(sourcePath);
-            int totalFiles = files.Length;
-            progressBar.Maximum = totalFiles;
+            progressBar.Maximum = files.Length;
             progressBar.Value = 0;
 
-            // Sao chép từng tập tin
-            foreach (string file in files)
+            await Task.Run(() =>
             {
-                string fileName = Path.GetFileName(file);
-                string destFile = Path.Combine(destinationPath, fileName);
+                foreach (var file in files)
+                {
+                    try
+                    {
+                        string fileName = Path.GetFileName(file);
+                        string dest = Path.Combine(destinationPath, fileName);
 
-                lblStatus.Text = $"Đang sao chép: {fileName}";
-                toolTip.SetToolTip(lblStatus, $"Đang sao chép: {fileName}");
-                await Task.Run(() => File.Copy(file, destFile, true));
+                        // Cập nhật status và tiến trình trên progressBar
+                        this.Invoke(new Action(() =>
+                        {
+                            lblStatus.Text = $"Đang sao chép: {fileName}";
+                            progressBar.Value += 1;
+                        }));
 
-                progressBar.Value += 1;
-                Application.DoEvents(); // Cập nhật giao diện
-            }
+                        File.Copy(file, dest, true);
+                    }
+                    catch (Exception ex)
+                    {
+                        this.Invoke(new Action(() =>
+                        {
+                            lblStatus.Text = $"Lỗi sao chép: {ex.Message}";
+                        }));
+                    }
+                }
+            });
 
             lblStatus.Text = "Hoàn tất sao chép!";
             MessageBox.Show("Sao chép hoàn tất.");

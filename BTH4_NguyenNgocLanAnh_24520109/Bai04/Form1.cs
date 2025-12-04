@@ -120,7 +120,7 @@ namespace Bai04
         {
             rtbMain.Clear();
             currentFile = "";
-            isSaved = false;
+            isSaved = true;
             isNewFile = true;
 
             int idxFont = cboFont.Items.IndexOf("Tahoma");
@@ -145,7 +145,7 @@ namespace Bai04
             if (AskSaveBeforeAction())
             {
                 OpenFileDialog openfile = new OpenFileDialog();
-                openfile.Filter = "TXT File| *.txt |RTF File | *.rtf";
+                openfile.Filter = "TXT File (*.txt)|*.txt| RTF File (*.rtf)|*.rtf";
                 if (openfile.ShowDialog() == DialogResult.OK)
                 {
                     currentFile = openfile.FileName;
@@ -161,9 +161,15 @@ namespace Bai04
         private void OpenFontDialogToolstrip_Click(object sender, EventArgs e)
         {
             FontDialog font = new FontDialog();
+            font.ShowApply = true; // cho phép chọn style
             if (font.ShowDialog() == DialogResult.OK)
             {
-                rtbMain.SelectionFont = font.Font;
+                if (rtbMain.SelectionLength > 0)
+                    rtbMain.SelectionFont = new Font(font.Font.FontFamily, font.Font.Size, font.Font.Style);
+                else
+                    rtbMain.Font = new Font(font.Font.FontFamily, font.Font.Size, font.Font.Style);
+
+                // cập nhật combobox
                 cboFont.SelectedIndex = cboFont.Items.IndexOf(font.Font.Name);
                 cboSize.SelectedIndex = cboSize.Items.IndexOf(font.Font.Size.ToString());
             }

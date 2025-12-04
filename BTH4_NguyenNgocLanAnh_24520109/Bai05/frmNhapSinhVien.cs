@@ -20,12 +20,17 @@ namespace Bai05
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = @"SELECT TENKHOA FROM KHOA";
+                string query = @"SELECT MAKHOA, TENKHOA FROM KHOA";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
-                while(reader.Read())
+                while (reader.Read())
                 {
-                    cboKhoa.Items.Add(reader["TENKHOA"].ToString());
+                    Khoa khoa = new Khoa
+                    {
+                        MaKhoa = reader.GetInt32(0),
+                        TenKhoa = reader.GetString(1)
+                    };
+                    cboKhoa.Items.Add(khoa);
                 }
             }
         }
@@ -41,15 +46,15 @@ namespace Bai05
                 return; // dừng lại, không thêm
             }
             // Kiểm tra MSSV là số nguyên
-            if (!int.TryParse(txtMaSV.Text, out int maSV))
+            if (!int.TryParse(txtMaSV.Text, out int maSV) || maSV <= 0)
             {
-                MessageBox.Show("Mã số sinh viên phải là số nguyên!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Mã số sinh viên phải là số nguyên dương!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             // Kiểm tra điểm TB có hợp lệ không
             if (!double.TryParse(txtDiemTB.Text, out double diem) || diem < 0 || diem > 10)
             {
-                MessageBox.Show("Điểm trung bình phải là số!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Điểm trung bình phải là số thuộc [0;10]!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -57,18 +62,44 @@ namespace Bai05
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
+                // Kiểm tra MSSV đã tồn tại chưa
+                string checkQuery = "SELECT COUNT(*) FROM SINHVIEN WHERE MSSV = @MSSV";
+                SqlCommand checkCmd = new SqlCommand(checkQuery, connection);
+                checkCmd.Parameters.AddWithValue("@MSSV", maSV);
+
+                int count = (int)checkCmd.ExecuteScalar();
+                if (count > 0)
+                {
+                    MessageBox.Show("Mã số sinh viên đã tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 string query = @"INSERT INTO SINHVIEN (MSSV, TEN, KHOA, DIEMTB) "
                                 + "VALUES (@MSSV, @TEN, @KHOA, @DIEMTB)";
                 SqlCommand command = new SqlCommand(query, connection);
+                Khoa selectedKhoa = cboKhoa.SelectedItem as Khoa;
+                if (selectedKhoa == null)
+                {
+                    MessageBox.Show("Vui lòng chọn khoa hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 command.Parameters.AddWithValue("@MSSV", maSV);
                 command.Parameters.AddWithValue("@TEN", txtTenSV.Text);
-                command.Parameters.AddWithValue("@KHOA", cboKhoa.SelectedItem.ToString());
+                command.Parameters.AddWithValue("@KHOA", selectedKhoa.MaKhoa);
                 command.Parameters.AddWithValue("@DIEMTB", diem);
 
                 try
                 {
                     command.ExecuteNonQuery();
                     MessageBox.Show("Thêm sinh viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Tạo đối tượng SinhVienMoi để trả về frmMain
+                    SinhVienMoi = new SinhVien
+                    {
+                        MSSV = maSV,
+                        Ten = txtTenSV.Text,
+                        Khoa = selectedKhoa.MaKhoa, // hiển thị tên khoa
+                        DiemTB = diem
+                    };
                 }
                 catch (Exception ex)
                 {
@@ -76,14 +107,6 @@ namespace Bai05
                     return;
                 }
             }
-            // Tạo đối tượng SinhVienMoi để trả về frmMain
-            SinhVienMoi = new SinhVien
-            {
-                MSSV = maSV,
-                Ten = txtTenSV.Text,
-                Khoa = cboKhoa.Text, // hiển thị tên khoa
-                DiemTB = diem
-            };
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

@@ -1,6 +1,7 @@
-﻿using System.Windows.Forms;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Bai05
 {
@@ -14,6 +15,7 @@ namespace Bai05
             this.MainMenuStrip = menuStrip1;
             LoadDatagrid();
             LoadDataFromDatabase();
+            dgvStudent.DataBindingComplete += dgvStudent_DataBindingComplete;
         }
         private void LoadDatagrid()
         {
@@ -48,6 +50,7 @@ namespace Bai05
             dgvStudent.Columns.Add(diemColumn);
 
             dgvStudent.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvStudent.AllowUserToAddRows = false;
         }
         private void LoadDataFromDatabase()
         {
@@ -62,12 +65,13 @@ namespace Bai05
                 adapter.Fill(dt);
 
                 dgvStudent.DataSource = dt;
-
-                // Đánh số thứ tự cho từng dòng
-                for (int i = 0; i < dgvStudent.Rows.Count; i++)
-                {
-                    dgvStudent.Rows[i].Cells[0].Value = i + 1;
-                }
+            }
+        }
+        private void dgvStudent_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            for (int i = 0; i < dgvStudent.Rows.Count; i++)
+            {
+                dgvStudent.Rows[i].Cells["STT"].Value = i + 1;
             }
         }
 
@@ -77,19 +81,6 @@ namespace Bai05
             frmNhapSinhVien nhap = new frmNhapSinhVien();
             if (nhap.ShowDialog() == DialogResult.OK)
             {
-                var svmoi = nhap.SinhVienMoi;
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-                    string query = "INSERT INTO SINHVIEN (MSSV, TEN, KHOA, DIEMTB) " +
-                                   "VALUES (@MSSV, @TEN, @KHOA, @DIEMTB)";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@MSSV", svmoi.MSSV);
-                    command.Parameters.AddWithValue("@TEN", svmoi.Ten);
-                    command.Parameters.AddWithValue("@KHOA", svmoi.Khoa);
-                    command.Parameters.AddWithValue("@DIEMTB", svmoi.DiemTB);
-                    command.ExecuteNonQuery();
-                }
                 LoadDataFromDatabase();
             }
         }
@@ -99,29 +90,21 @@ namespace Bai05
             Application.Exit();
         }
         // Tìm kiếm theo tên
-        private void txbFindStudent_TextChanged(object sender, System.EventArgs e)
+        private void txbFindStudent_TextChanged(object sender, EventArgs e)
         {
-            string keyword = txbFindStudent.Text.Trim().ToLower();
-            if (string.IsNullOrEmpty(keyword))
+            string keyword = txbFindStudent.Text.Trim();
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-                    string query = "SELECT SV.MSSV, SV.TEN, K.TENKHOA,SV.DIEMTB " +
-                        "FROM SINHVIEN SV" +
-                        "INNER JOIN KHOA K ON K.MAKHOA = SV.KHOA" +
-                        "WHERE SV.TEN LIKE @keyword";
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                    adapter.SelectCommand.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-                    dgvStudent.DataSource = dt;
-                    // Đánh số thứ tự
-                    for (int i = 0; i < dgvStudent.Rows.Count; i++)
-                    {
-                        dgvStudent.Rows[i].Cells[0].Value = i + 1;
-                    }
-                }
+                connection.Open();
+                string query = "SELECT SV.MSSV, SV.TEN, K.TENKHOA, SV.DIEMTB " +
+                               "FROM SINHVIEN SV " +
+                               "INNER JOIN KHOA K ON K.MAKHOA = SV.KHOA " +
+                               "WHERE SV.TEN LIKE @keyword";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                adapter.SelectCommand.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                dgvStudent.DataSource = dt;
             }
         }
     }

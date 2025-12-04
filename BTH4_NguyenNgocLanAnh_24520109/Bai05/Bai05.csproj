@@ -58,6 +58,7 @@
     <Compile Include="frmNhapSinhVien.Designer.cs">
       <DependentUpon>frmNhapSinhVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="Khoa.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SinhVien.cs" />
